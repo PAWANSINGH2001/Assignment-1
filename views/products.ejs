@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product List</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th,
+    td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+
+<body>
+    <h1>Product List</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Product ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Featured</th>
+          <th>Rating</th>
+          <th>Created At</th>
+          <th>Company</th>
+        </tr>
+
+      </thead>
+      <tbody id="productList">
+        <!-- Product data will be populated here -->
+        <% for(let i=0;i<Object.keys(products).length;i++){%>
+          <tr>
+          <td><%= products[i].productID %></td>
+          <td><%= products[i].name %></td>
+          <td><%= products[i].price %></td>
+          <td><%= products[i].featured %></td>
+          <td><%= products[i].rating %></td>
+          <td><%= products[i].createdAt %></td>
+          <td><%= products[i].company %></td>
+        </tr>
+        <%}%>
+      </tbody>
+    </table>
+    <button><a href="http://localhost:3000/addItem">Add Item</a></button>
+    <button><a href="http://localhost:3000/updateItem">Update Item</a></button>
+    <button><a href="http://localhost:3000/deleteItem">Delete Item</a></button>
+    <button><a href="http://localhost:3000/logout">Logout</a></button>
+</body>
+
+</html>
