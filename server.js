@@ -7,10 +7,10 @@ const User = require('./models/users.js');
 const session = require('express-session');
 const path = require('path');
 const ejsMate = require('ejs-mate')
-
+const env = require('dotenv');
 const app = express();
 const PORT = process.env.PORT || 3000;
-
+env.config();
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname + 'views'));
@@ -22,7 +22,8 @@ app.use(
 );
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost/products-api', {
+const uri = process.env.db_URL;
+mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
